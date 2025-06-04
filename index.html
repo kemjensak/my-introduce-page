@@ -1,24 +1,413 @@
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>jikim-intro-verse</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinseok Kim - Personal Intro</title>
+    <meta name="description" content="김진석의 개인 소개 페이지 - PC 덕후, HIFI 애호가, 드라이브 러버">
+    
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <style>
+        :root {
+            --bg-color: #F5F5F5;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --primary-color: #0066CC;
+            --text-color: #333;
+            --text-secondary: #666;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
 
-    <meta property="og:title" content="jikim-intro-verse" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 32px;
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .greeting-text {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 16px;
+        }
+
+        .keyword-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .keyword {
+            background: linear-gradient(135deg, var(--primary-color), #0052a3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .keyword:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
+        }
+
+        .setup-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .setup-table th,
+        .setup-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .setup-table th {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            font-weight: 600;
+            color: var(--text-color);
+            width: 30%;
+        }
+
+        .setup-table td {
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .setup-table tr:hover {
+            background: rgba(0, 102, 204, 0.05);
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .hobby-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .hobby-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .hobby-title {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 4px;
+        }
+
+        .hobby-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--primary-color), #0052a3);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 102, 204, 0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+
+            .section {
+                padding: 24px;
+                margin-bottom: 24px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .setup-table th,
+            .setup-table td {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            .setup-table th {
+                width: 35%;
+            }
+
+            .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+
+            .keyword-list {
+                gap: 8px;
+            }
+
+            .keyword {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            p, .greeting-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Greeting Section -->
+        <section class="section">
+            <h1>👋 안녕하세요! 김진석입니다.</h1>
+            <p class="greeting-text">개발과 음악, 그리고 좋은 장비를 사랑하는 사람입니다.</p>
+            <p class="greeting-text">30초면 충분히 저를 알아가실 수 있을 거예요!</p>
+        </section>
+
+        <!-- About Section -->
+        <section class="section">
+            <h2>🎯 About Me</h2>
+            <p>저는 이런 사람이에요</p>
+            <div class="keyword-list">
+                <span class="keyword">PC 덕후</span>
+                <span class="keyword">HIFI 애호가</span>
+                <span class="keyword">드라이브 러버</span>
+                <span class="keyword">게임 매니아</span>
+                <span class="keyword">음악 감상가</span>
+                <span class="keyword">카페 투어러</span>
+                <span class="keyword">기술 탐구자</span>
+            </div>
+        </section>
+
+        <!-- My Setup Section -->
+        <section class="section">
+            <h2>⚙️ My Setup</h2>
+            <p>현재 사용하고 있는 장비들입니다</p>
+            <table class="setup-table">
+                <tr>
+                    <th>CPU</th>
+                    <td>Intel Core i7-13700KF</td>
+                </tr>
+                <tr>
+                    <th>GPU</th>
+                    <td>NVIDIA RTX 3080 Ti</td>
+                </tr>
+                <tr>
+                    <th>Monitor</th>
+                    <td>MSI MAG281URF (4K / 144Hz)</td>
+                </tr>
+                <tr>
+                    <th>Audio</th>
+                    <td>Sennheiser IE900 · HD6xx<br>PreSonus Eris 3.5 · FiiO K11</td>
+                </tr>
+                <tr>
+                    <th>Mic</th>
+                    <td>PreSonus Revelator Dynamic</td>
+                </tr>
+                <tr>
+                    <th>Keyboard</th>
+                    <td>Mchose Ace 68 Pro (자성 스위치)</td>
+                </tr>
+                <tr>
+                    <th>Mouse</th>
+                    <td>Logitech G Pro X Superlight</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Hobbies Section -->
+        <section class="section">
+            <h2>🎮 Hobbies & Interests</h2>
+            <p>이런 것들을 좋아해요</p>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <span class="hobby-icon">🎮</span>
+                    <div class="hobby-title">게임</div>
+                    <div class="hobby-desc">다양한 장르의 게임을 즐겨요</div>
+                </div>
+                <div class="hobby-card">
+                    <span class="hobby-icon">🎵</span>
+                    <div class="hobby-title">음악 감상</div>
+                    <div class="hobby-desc">고음질로 듣는 음악이 최고죠</div>
+                </div>
+                <div class="hobby-card">
+                    <span class="hobby-icon">🚗</span>
+                    <div class="hobby-title">드라이브</div>
+                    <div class="hobby-desc">좋은 음악과 함께하는 드라이브</div>
+                </div>
+                <div class="hobby-card">
+                    <span class="hobby-icon">☕</span>
+                    <div class="hobby-title">카페 투어</div>
+                    <div class="hobby-desc">새로운 카페 발견하는 재미</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section">
+            <h2>📞 Contact</h2>
+            <p>여기서 저를 찾을 수 있어요</p>
+            <div class="contact-links">
+                <a href="https://github.com/jinseokkim" class="contact-link" target="_blank" rel="noopener">
+                    <span>🐙</span>
+                    <span>GitHub</span>
+                </a>
+                <a href="#" class="contact-link" onclick="copyDiscord()">
+                    <span>💬</span>
+                    <span>Discord: jikim#1234</span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function copyDiscord() {
+            navigator.clipboard.writeText('jikim#1234').then(() => {
+                alert('Discord 태그가 복사되었습니다! 📋');
+            }).catch(() => {
+                alert('Discord 태그: jikim#1234');
+            });
+        }
+
+        // Smooth reveal animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
 </html>
